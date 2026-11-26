@@ -57,13 +57,13 @@ namespace Cairo_Cinema.API.Areas.Admin.Controller
 
         //Create
         [HttpPost]
-        public async Task<IActionResult> Create(CreateUpdateCategory createUpdateCategory)
+        public async Task<IActionResult> Create(CreateUpdateCategoryRequest CreateUpdateCategoryRequest)
         {
             /*var category = new Category();
-            category.Name = createUpdateCategory.Name;
-            category.Description = createUpdateCategory.Description;
-            category.Status = createUpdateCategory.Status;*/
-            var category = createUpdateCategory.Adapt<Category>();
+            category.Name = CreateUpdateCategoryRequest.Name;
+            category.Description = CreateUpdateCategoryRequest.Description;
+            category.Status = CreateUpdateCategoryRequest.Status;*/
+            var category = CreateUpdateCategoryRequest.Adapt<Category>();
 
             await _categoryRepository.AddAsync(category);
             await _categoryRepository.CommitAsync();
@@ -78,10 +78,10 @@ namespace Cairo_Cinema.API.Areas.Admin.Controller
         //Update
         [HttpPut("{id}")]
         [Authorize(Roles = $"{CD.SUPER_ADMIN},{CD.ADMIN}")]
-        public async Task<IActionResult> Update(int id, CreateUpdateCategory createUpdateCategory)
+        public async Task<IActionResult> Update(int id, CreateUpdateCategoryRequest CreateUpdateCategoryRequest)
         {
             var category = await _categoryRepository.GetOneAsync(c => c.Id == id);
-            category = createUpdateCategory.Adapt(category);
+            category = CreateUpdateCategoryRequest.Adapt(category);
 
             if (category == null)
             {

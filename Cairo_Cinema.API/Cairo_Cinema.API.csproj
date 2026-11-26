@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.13" />
     <PackageReference Include="Scalar.AspNetCore" Version="3.1.1" />
 	  <PackageReference Include="Mapster" Version="10.0.14" />
@@ -22,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Customer\Controller\" />
     <Folder Include="wwwroot\Admin\Actor\images\" />
     <Folder Include="wwwroot\Admin\Cinema\images\" />
     <Folder Include="wwwroot\Admin\MovieSubImage\images\" />
